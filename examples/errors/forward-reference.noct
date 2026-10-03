@@ -1,0 +1,7 @@
+# expect: 'base' is used before it is declared
+var damage = base * 2
+var base = 10
+
+room arena "Arena":
+    on enter:
+        say "Damage: {damage}"

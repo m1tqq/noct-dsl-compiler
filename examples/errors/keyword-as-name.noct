@@ -1,0 +1,6 @@
+# expect: expected the name of a door or object to inspect, found keyword 'door'
+room foyer "Foyer":
+    door exit -> foyer locked
+
+    on inspect door:
+        say "It won't open."

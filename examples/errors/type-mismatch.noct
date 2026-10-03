@@ -1,0 +1,7 @@
+# expect: cannot assign BOOL to var 'health'
+var health = 100
+flag poisoned = true
+
+room lab "Laboratory":
+    on enter:
+        set health, poisoned

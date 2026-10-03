@@ -1,0 +1,7 @@
+# expect: comparisons cannot be chained
+var health = 50
+
+room ward "Ward":
+    on enter:
+        if 0 < health < 100:
+            say "You are hurt."

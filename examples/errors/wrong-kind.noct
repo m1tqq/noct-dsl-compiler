@@ -1,0 +1,7 @@
+# expect: 'key' is an item, not a var or flag
+item key "Rusty Key"
+
+room cell "Cell":
+    on enter:
+        if key:
+            say "You have the key."

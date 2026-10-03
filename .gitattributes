@@ -1,0 +1,3 @@
+# Highlight .noct files on GitHub using Python's grammar (closest match: indentation + '#' comments)
+*.noct linguist-language=Python linguist-detectable=false
+* text=auto eol=lf

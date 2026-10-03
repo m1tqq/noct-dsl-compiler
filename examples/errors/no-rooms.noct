@@ -1,0 +1,3 @@
+# expect: the program has no rooms
+item key "Rusty Key"
+var health = 100

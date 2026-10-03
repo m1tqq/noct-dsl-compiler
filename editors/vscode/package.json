@@ -1,0 +1,31 @@
+{
+  "name": "noct",
+  "displayName": "Noct",
+  "description": "Syntax highlighting for Noct, a language for survival-horror text adventures",
+  "version": "1.0.0",
+  "publisher": "noct-lang",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "noct",
+        "aliases": ["Noct", "noct"],
+        "extensions": [".noct"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "noct",
+        "scopeName": "source.noct",
+        "path": "./syntaxes/noct.tmLanguage.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+# Blackwood Asylum
+# A short Noct game: wake up in a cell, restore the power, escape.
+#
+#   java -jar target/noct.jar play examples/asylum.noct
+
+item hairpin  "Bent Hairpin"
+item gate_key "Brass Gate Key"
+
+var health = 100
+var sanity = 3
+
+flag awake = false
+flag power = false
+flag bed_searched = false
+flag bitten = false
+
+
+room cell "Your Cell":
+    door cell_door -> corridor locked requires hairpin
+    object bed "Rusted Bed"
+
+    on enter:
+        if not awake:
+            set awake, true
+            say "You wake on a stained mattress. The door is locked from the outside."
+            say "Somewhere down the hall, something is humming a lullaby."
+        else:
+            say "Your cell. You are not going back to sleep in here."
+
+    on inspect bed:
+        if not bed_searched:
+            set bed_searched, true
+            give hairpin
+            say "Wedged between the springs: a bent hairpin. It might fit a lock."
+        else:
+            say "Just springs and old stains."
+
+    on inspect cell_door:
+        say "A heavy door with a simple lock. You could pick it with something thin."
+
+
+room corridor "East Wing Corridor":
+    door to_cell  -> cell
+    door to_office -> office
+    door stairs   -> basement
+    door gate     -> courtyard locked
+
+    on enter:
+        if not power:
+            set sanity, sanity - 1
+            say "The corridor is pitch black. Your sanity slips. (Sanity: {sanity})"
+            if sanity <= 0:
+                end "You curl up in the dark and stop moving. They find you in the morning."
+        else:
+            say "Flickering lights show scratch marks along the walls."
+
+    on inspect gate:
+        if power:
+            say "An iron gate with an electric lock. The keypad glows green."
+        else:
+            say "An iron gate with an electric lock. The keypad is dead."
+
+    on use gate_key on gate:
+        if power:
+            unlock gate
+            take gate_key
+            say "The lock clicks open. The key snaps off inside it."
+        else:
+            say "The key turns, but the electric lock doesn't respond. No power."
+
+
+room office "Doctor's Office":
+    door back -> corridor
+    object desk "Mahogany Desk"
+    object files "Patient Files"
+
+    on enter:
+        say "Papers everywhere. The doctor left in a hurry."
+
+    on inspect desk:
+        if has(gate_key):
+            say "Empty drawers."
+        else:
+            give gate_key
+            say "In the top drawer: a brass key tagged 'GATE'."
+
+    on inspect files:
+        say "Your own file is on top. Under 'Prognosis' someone wrote: \"Do not let it out.\""
+
+
+room basement "Basement":
+    door up -> corridor
+    object generator "Diesel Generator"
+
+    on enter:
+        if not bitten:
+            set bitten, true
+            set health, health - 40
+            say "Something lunges from the dark and sinks its teeth into your arm! (Health: {health})"
+        else:
+            say "You hear it breathing somewhere behind the pipes."
+
+    on inspect generator:
+        if power:
+            say "The generator rattles steadily."
+        else:
+            set power, true
+            set sanity, sanity + 1
+            say "You yank the cord. The generator coughs to life and lights flicker on upstairs."
+
+
+room courtyard "Courtyard":
+    on enter:
+        if health > 50 and sanity >= 3:
+            end "Cold air, wet grass, the gate behind you. You run and don't look back."
+        else:
+            end "You stagger into the courtyard. You are free, but something followed you out."

@@ -1,0 +1,10 @@
+# expect: room 'basement' has no door named 'gate'
+room yard "Yard":
+    door gate -> basement locked
+
+room basement "Basement":
+    door up -> yard
+    object lever "Rusty Lever"
+
+    on inspect lever:
+        unlock gate

@@ -1,0 +1,9 @@
+# expect: unknown room 'hal'
+item key "Rusty Key"
+
+room cell "Cell":
+    door exit -> hal locked requires key
+
+room hall "Hallway":
+    on enter:
+        end "You made it out."

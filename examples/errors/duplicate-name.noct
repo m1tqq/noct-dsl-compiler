@@ -1,0 +1,7 @@
+# expect: the name 'power' is already used
+flag power = false
+var power = 100
+
+room control "Control Room":
+    on enter:
+        say "Humming."

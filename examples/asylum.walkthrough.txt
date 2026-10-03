@@ -1,0 +1,12 @@
+inspect bed
+go cell_door
+go stairs
+inspect generator
+go up
+go to_office
+inspect desk
+inspect files
+go back
+inspect gate
+use gate_key on gate
+go gate

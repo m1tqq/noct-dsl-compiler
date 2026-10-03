@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Noct",
+  "scopeName": "source.noct",
+  "fileTypes": ["noct"],
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#declaration" },
+    { "include": "#member" },
+    { "include": "#handler" },
+    { "include": "#keyword" },
+    { "include": "#literal" },
+    { "include": "#operator" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.number-sign.noct",
+      "match": "#.*$"
+    },
+    "string": {
+      "name": "string.quoted.double.noct",
+      "begin": "\"",
+      "end": "\"|$",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.noct" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.noct" } },
+      "patterns": [
+        {
+          "name": "constant.character.escape.noct",
+          "match": "\\\\[\"\\\\nt{}]"
+        },
+        {
+          "name": "meta.interpolation.noct",
+          "match": "(\\{)([A-Za-z_][A-Za-z0-9_]*)(\\})",
+          "captures": {
+            "1": { "name": "punctuation.section.interpolation.begin.noct" },
+            "2": { "name": "variable.other.noct" },
+            "3": { "name": "punctuation.section.interpolation.end.noct" }
+          }
+        }
+      ]
+    },
+    "declaration": {
+      "match": "\\b(item|flag|var|room)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "storage.type.noct" },
+        "2": { "name": "entity.name.type.noct" }
+      }
+    },
+    "member": {
+      "match": "\\b(door|object)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "storage.type.noct" },
+        "2": { "name": "entity.name.function.noct" }
+      }
+    },
+    "handler": {
+      "match": "\\b(on)\\s+(enter|inspect|use)\\b",
+      "captures": {
+        "1": { "name": "keyword.control.noct" },
+        "2": { "name": "keyword.control.noct" }
+      }
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "name": "keyword.control.conditional.noct",
+          "match": "\\b(if|else)\\b"
+        },
+        {
+          "name": "keyword.control.noct",
+          "match": "\\b(on|end)\\b"
+        },
+        {
+          "name": "keyword.other.noct",
+          "match": "\\b(locked|requires)\\b"
+        },
+        {
+          "name": "support.function.noct",
+          "match": "\\b(say|set|give|take|lock|unlock|has)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.noct",
+          "match": "\\b(and|or|not)\\b"
+        }
+      ]
+    },
+    "literal": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.noct",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.numeric.integer.noct",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+    "operator": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.noct",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.comparison.noct",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.assignment.noct",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.noct",
+          "match": "[+\\-*/]"
+        }
+      ]
+    }
+  }
+}

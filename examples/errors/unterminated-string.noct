@@ -1,0 +1,4 @@
+# expect: unterminated string
+room hall "Hallway":
+    on enter:
+        say "It's too quiet.

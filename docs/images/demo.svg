@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="719" height="513" viewBox="0 0 719 513" role="img" aria-label="Playing a Noct game in the terminal">
+<style>text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:14px;white-space:pre}</style>
+<rect width="719" height="513" rx="10" fill="#14121a"/>
+<path d="M0 10a10 10 0 0 1 10-10h699a10 10 0 0 1 10 10v24H0z" fill="#1f1c27"/>
+<circle cx="20" cy="17" r="6" fill="#ff5f57"/>
+<circle cx="40" cy="17" r="6" fill="#febc2e"/>
+<circle cx="60" cy="17" r="6" fill="#28c840"/>
+<text x="359.5" y="22" text-anchor="middle" fill="#7d7690" style="font-size:12px">noct — asylum.noct</text>
+<text x="22" y="54" xml:space="preserve"><tspan fill="#9a93b0">$ </tspan><tspan fill="#f2efe8">java -jar target/noct.jar play examples/asylum.noct</tspan></text>
+<text x="22" y="75" xml:space="preserve"><tspan fill="#e0525c" font-weight="bold">== Your Cell ==</tspan></text>
+<text x="22" y="96" xml:space="preserve"><tspan fill="#c9c4d6">You wake on a stained mattress. The door is locked from the outside.</tspan></text>
+<text x="22" y="117" xml:space="preserve"><tspan fill="#c9c4d6">Somewhere down the hall, something is humming a lullaby.</tspan></text>
+<text x="22" y="159" xml:space="preserve"><tspan fill="#8fd18a">&gt; </tspan><tspan fill="#f2efe8" font-weight="bold">inspect bed</tspan></text>
+<text x="22" y="180" xml:space="preserve"><tspan fill="#c9c4d6">Wedged between the springs: a bent hairpin. It might fit a lock.</tspan></text>
+<text x="22" y="222" xml:space="preserve"><tspan fill="#8fd18a">&gt; </tspan><tspan fill="#f2efe8" font-weight="bold">go cell_door</tspan></text>
+<text x="22" y="243" xml:space="preserve"><tspan fill="#7d7690">You unlock cell_door with the Bent Hairpin.</tspan></text>
+<text x="22" y="285" xml:space="preserve"><tspan fill="#e0525c" font-weight="bold">== East Wing Corridor ==</tspan></text>
+<text x="22" y="306" xml:space="preserve"><tspan fill="#c9c4d6">The corridor is pitch black. Your sanity slips. (Sanity: 2)</tspan></text>
+<text x="22" y="348" xml:space="preserve"><tspan fill="#8fd18a">&gt; </tspan><tspan fill="#f2efe8" font-weight="bold">go stairs</tspan></text>
+<text x="22" y="390" xml:space="preserve"><tspan fill="#e0525c" font-weight="bold">== Basement ==</tspan></text>
+<text x="22" y="411" xml:space="preserve"><tspan fill="#c9c4d6">Something lunges from the dark and sinks its teeth into your arm! (Health: 60)</tspan></text>
+<text x="22" y="453" xml:space="preserve"><tspan fill="#8fd18a">&gt; </tspan><tspan fill="#f2efe8" font-weight="bold">inspect generator</tspan></text>
+<text x="22" y="474" xml:space="preserve"><tspan fill="#c9c4d6">You yank the cord. The generator coughs to life and lights flicker on upstairs.</tspan></text>
+</svg>

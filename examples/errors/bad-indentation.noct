@@ -1,0 +1,5 @@
+# expect: unexpected indentation
+room lab "Laboratory":
+    on enter:
+        say "You hear footsteps behind you."
+          say "The door slams shut."

@@ -1,0 +1,202 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13540\viewh21780\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 // PO\uc0\u268 ETNI SIMBOL\
+\
+program\
+    -> declaration_list EOF\
+    ;\
+\
+// LISTA DEKLARACIJA\
+\
+declaration_list\
+    -> declaration declaration_list\
+    | \uc0\u949 \
+    ;\
+\
+declaration\
+    -> item_decl\
+    | flag_decl\
+    | var_decl\
+    | room_decl\
+    ;\
+\
+// DEKLARACIJE ENTITETA\
+\
+item_decl\
+    -> ITEM IDENTIFIER STRING_LIT\
+    ;\
+\
+flag_decl\
+    -> FLAG IDENTIFIER ASSIGN BOOL_LIT\
+    ;\
+\
+var_decl\
+    -> VAR IDENTIFIER ASSIGN expression\
+    ;\
+\
+// DEFINICIJA SOBE (SCENE)\
+\
+room_decl\
+    -> ROOM IDENTIFIER STRING_LIT COLON room_block\
+    ;\
+\
+room_block\
+    -> INDENT room_stmt_list DEDENT\
+    ;\
+\
+room_stmt_list\
+    -> room_stmt room_stmt_list\
+    | \uc0\u949 \
+    ;\
+\
+room_stmt\
+    -> door_decl\
+    | object_decl\
+    | event_block\
+    ;\
+\
+// VRATA I OBJEKTI\
+\
+door_decl\
+    -> DOOR IDENTIFIER ARROW IDENTIFIER door_opts_opt\
+    ;\
+\
+door_opts_opt\
+    -> door_opts\
+    | \uc0\u949 \
+    ;\
+\
+door_opts\
+    -> LOCKED\
+    | REQUIRES IDENTIFIER\
+    | LOCKED REQUIRES IDENTIFIER\
+    ;\
+\
+object_decl\
+    -> OBJECT IDENTIFIER STRING_LIT\
+    ;\
+\
+// EVENT BLOKOVI (OKIDA\uc0\u268 I)\
+\
+event_block\
+    -> ON trigger COLON event_body\
+    ;\
+\
+event_body\
+    -> INDENT action_list DEDENT\
+    ;\
+\
+trigger\
+    -> ENTER\
+    | INSPECT IDENTIFIER\
+    | USE IDENTIFIER ON IDENTIFIER\
+    ;\
+\
+// AKCIJE\
+\
+action_list\
+    -> action action_list\
+    | \uc0\u949 \
+    ;\
+\
+action\
+    -> say_stmt\
+    | set_stmt\
+    | give_stmt\
+    | take_stmt\
+    | lock_stmt\
+    | unlock_stmt\
+    | if_stmt\
+    ;\
+\
+// POJEDINA\uc0\u268 NE AKCIJE\
+\
+say_stmt\
+    -> SAY STRING_LIT\
+    ;\
+\
+set_stmt\
+    -> SET IDENTIFIER COMMA expression\
+    ;\
+\
+give_stmt\
+    -> GIVE IDENTIFIER\
+    ;\
+\
+take_stmt\
+    -> TAKE IDENTIFIER\
+    ;\
+\
+lock_stmt\
+    -> LOCK IDENTIFIER\
+    ;\
+\
+unlock_stmt\
+    -> UNLOCK IDENTIFIER\
+    ;\
+\
+// USLOVNO GRANANJE\
+\
+if_stmt\
+    -> IF condition COLON INDENT action_list DEDENT else_part_opt\
+    ;\
+\
+else_part_opt\
+    -> ELSE COLON INDENT action_list DEDENT\
+    | \uc0\u949 \
+    ;\
+\
+// USLOVI I IZRAZI\
+\
+condition\
+    -> expression rel_op expression\
+    | HAS LPAREN IDENTIFIER RPAREN\
+    ;\
+\
+rel_op\
+    -> EQ | NEQ | LT | LE | GT | GE\
+    ;\
+\
+expression\
+    -> term expression_tail\
+    ;\
+\
+expression_tail\
+    -> ADD term expression_tail\
+    | SUB term expression_tail\
+    | \uc0\u949 \
+    ;\
+\
+term\
+    -> factor term_tail\
+    ;\
+\
+term_tail\
+    -> MUL factor term_tail\
+    | DIV factor term_tail\
+    | \uc0\u949 \
+    ;\
+\
+factor\
+    -> NUMBER_LIT\
+    | IDENTIFIER\
+    | LPAREN expression RPAREN\
+    ;\
+\
+// LEKSIKA (REGULARNI IZRAZI)\
+\
+IDENTIFIER  -> /[a-zA-Z_][a-zA-Z0-9_]*/ ;\
+STRING_LIT  -> /"[^"]*"/ ;\
+NUMBER_LIT  -> /[0-9]+/ ;\
+BOOL_LIT    -> "true" | "false" ;\
+\
+// INDENTACIJA (BLOKOVI)\
+\
+INDENT  -> <indentation>\
+DEDENT  -> <dedentation>\
+}

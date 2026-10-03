@@ -1,6 +1,6 @@
 # Noct
 
-[![CI](https://github.com/m1tqq/noct/actions/workflows/ci.yml/badge.svg)](https://github.com/m1tqq/noct/actions/workflows/ci.yml)
+[![CI](https://github.com/m1tqq/noct-dsl-compiler/actions/workflows/ci.yml/badge.svg)](https://github.com/m1tqq/noct-dsl-compiler/actions/workflows/ci.yml)
 ![Java 21](https://img.shields.io/badge/Java-21-orange)
 ![Dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -98,8 +98,8 @@ list is in the [language reference](docs/language.md#static-checks).
 Requires **JDK 21** and **Maven**.
 
 ```sh
-git clone https://github.com/m1tqq/noct.git
-cd noct
+git clone https://github.com/m1tqq/noct-dsl-compiler.git
+cd noct-dsl-compiler
 mvn package
 java -jar target/noct.jar play examples/asylum.noct
 ```
